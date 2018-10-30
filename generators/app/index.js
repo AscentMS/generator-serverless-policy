@@ -1,6 +1,7 @@
 'use strict';
 const fs = require('fs');
 const Generator = require('yeoman-generator');
+const optionOrPrompt = require('yeoman-option-or-prompt');
 
 const buildPolicy = (serviceName, stage, region) => {
   return {
@@ -152,6 +153,8 @@ const escapeValFilename = function(val) {
 };
 
 module.exports = class extends Generator {
+  _optionOrPrompt = optionOrPrompt;
+
   constructor(args, opts) {
     super(args, opts);
 
@@ -169,6 +172,10 @@ module.exports = class extends Generator {
       type: String,
       default: '*'
     });
+
+    this.slsSettings.name = this.options.project;
+    this.slsSettings.stage = this.options.stage;
+    this.slsSettings.region = this.options.region;
   }
 
   prompting() {
@@ -194,12 +201,14 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'dynamodb',
-        message: 'Does your service rely on DynamoDB?'
+        message: 'Does your service rely on DynamoDB?',
+        default: "n"
       },
       {
         type: 'confirm',
         name: 's3',
         message: 'Is your service going to be using S3 buckets?'
+        default: "n"
       }
     ]).then(answers => {
       this.slsSettings = answers;
