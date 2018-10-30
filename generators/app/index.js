@@ -181,7 +181,9 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    return optionOrPrompt([
+    this._optionOrPrompt = optionOrPrompt;
+
+    return this._optionOrPrompt([
       {
         type: 'input',
         name: 'name',
