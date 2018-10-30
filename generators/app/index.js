@@ -1,6 +1,7 @@
 'use strict';
 const fs = require('fs');
 const Generator = require('yeoman-generator');
+const optionOrPrompt = require('yeoman-option-or-prompt');
 
 const buildPolicy = (serviceName, stage, region) => {
   return {
@@ -155,7 +156,7 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('project', {
+    /*this.option('project', {
       description: 'The name of the Serverless project',
       type: String
     });
@@ -176,11 +177,11 @@ module.exports = class extends Generator {
 
     this.slsSettings.name = this.options.project || this.appname;
     this.slsSettings.stage = this.options.stage;
-    this.slsSettings.region = this.options.region;
+    this.slsSettings.region = this.options.region;*/
   }
 
   prompting() {
-    return this.prompt([
+    return optionOrPrompt([
       {
         type: 'input',
         name: 'name',
