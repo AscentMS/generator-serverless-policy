@@ -170,6 +170,10 @@ module.exports = class extends Generator {
       default: '*'
     });
 
+    if (!this.slsSettings) {
+      this.slsSettings = {};
+    }
+
     this.slsSettings.name = this.options.project || this.appname;
     this.slsSettings.stage = this.options.stage;
     this.slsSettings.region = this.options.region;
