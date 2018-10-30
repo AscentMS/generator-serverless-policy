@@ -1,7 +1,7 @@
 'use strict';
 const fs = require('fs');
 const Generator = require('yeoman-generator');
-const optionOrPrompt = require('yeoman-option-or-prompt');
+//const optionOrPrompt = require('yeoman-option-or-prompt');
 
 const buildPolicy = (serviceName, stage, region) => {
   return {
@@ -153,7 +153,7 @@ const escapeValFilename = function(val) {
 };
 
 module.exports = class extends Generator {
-  _optionOrPrompt = optionOrPrompt;
+  //_optionOrPrompt = optionOrPrompt;
 
   constructor(args, opts) {
     super(args, opts);
