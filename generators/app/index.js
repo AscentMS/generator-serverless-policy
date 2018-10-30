@@ -199,13 +199,13 @@ module.exports = class extends Generator {
         type: 'confirm',
         name: 'dynamodb',
         message: 'Does your service rely on DynamoDB?',
-        default: "n"
+        default: 'n'
       },
       {
         type: 'confirm',
         name: 's3',
-        message: 'Is your service going to be using S3 buckets?'
-        default: "n"
+        message: 'Is your service going to be using S3 buckets?',
+        default: 'n'
       }
     ]).then(answers => {
       this.slsSettings = answers;
